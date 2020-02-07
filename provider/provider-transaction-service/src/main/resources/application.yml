@@ -1,0 +1,31 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: provider-transaction
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.62.134:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8888
+    alibaba:
+      seata:
+        tx-service-group: tx-group
+
+dubbo:
+  scan:
+    base-packages: com.johnny.provider.service
+  protocol:
+    name: dubbo
+    port: -1
+  provider:
+    loadbalance: roundrobin
+  registry:
+    address: nacos://192.168.62.134:8848
+
+#logging:
+#  level:
+#    com.johnny.spring.provider.mapper: debug
+#    io.seata.core: debug
